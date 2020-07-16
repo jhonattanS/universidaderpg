@@ -2,13 +2,13 @@
 
 ## Running the Application Locally
 
-# Step 1 - Download and Install Dart sdk
-# Step 2 - Install aqueduct run the following command
+### Step 1 - Download and Install Dart sdk
+### Step 2 - Install aqueduct run the following command
 ``` 
 pub global activate aqueduct
 
 ```
-# Step 3 - open this project folder and run `aqueduct serve`
+### Step 3 - open this project folder and run `aqueduct serve`
 
 Run `aqueduct serve` from this directory to run the application. For running within an IDE, run `bin/main.dart`. By default, a configuration file named `config.yaml` will be used.
 
