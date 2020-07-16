@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aqueduct OpenAPI Client</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui.css">
+</head>
+
+<body>
+<div id="swagger-ui"></div>
+<script src="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui-standalone-preset.js"></script>
+<script src="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui-bundle.js"></script>
+<script>
+    window.onload = function() {       
+        const ui = SwaggerUIBundle({
+            spec: {"openapi":"3.0.0","info":{"title":"universidaderpg","description":"An empty Aqueduct application.","version":"0.0.1"},"servers":[{"url":"http://localhost:8888"}],"paths":{"/docs":{"parameters":[]},"/perfis":{"parameters":[],"get":{"tags":["Perfil"],"operationId":"getAll","parameters":[{"name":"Authorization","description":"Token de Autorização","in":"header","schema":{"type":"string"}}],"responses":{"200":{"description":"Perfil Encontrado","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Perfil"}}}}}}},"post":{"tags":["Perfil"],"operationId":"create","parameters":[{"name":"Authorization","description":"Token de Autorização","in":"header","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/Perfil"}}}},"responses":{"200":{"description":"Perfil Criado","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Perfil"}}}}}}},"/perfis/{idReferencia}":{"parameters":[{"name":"idReferencia","in":"path","required":true,"schema":{"type":"string"}}],"get":{"tags":["Perfil"],"operationId":"exists","parameters":[{"name":"idReferencia","in":"path","required":true,"schema":{"type":"integer"}},{"name":"Authorization","description":"Token de Autorização","in":"header","schema":{"type":"string"}}],"responses":{"200":{"description":"Todos os Perfis","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Perfil"}}}},"404":{"description":"Perfil não encontrado","content":{"application/json":{}}}}}},"/auth":{"parameters":[],"post":{"tags":["OAuth"],"operationId":"auth","parameters":[],"responses":{"200":{"description":"Token Criado","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Token"}}}}}}}},"components":{"schemas":{"Perfil":{"title":"Perfil","type":"object","properties":{"id":{"title":"id","type":"integer"},"nome":{"title":"nome","type":"string"},"idReferencia":{"title":"idReferencia","type":"integer"},"classe":{"title":"classe","type":"string"}}},"Token":{"title":"Token","type":"object","properties":{"expires":{"title":"expires","type":"integer"},"token":{"title":"token","type":"string"}}}},"responses":{},"parameters":{},"requestBodies":{},"headers":{},"securitySchemes":{},"callbacks":{}}},
+            dom_id: '#swagger-ui',
+            deepLinking: true,
+            presets: [
+                SwaggerUIBundle.presets.apis,
+                SwaggerUIStandalonePreset
+            ],
+            plugins: [
+                SwaggerUIBundle.plugins.DownloadUrl
+            ],
+            layout: "StandaloneLayout",
+        })
+        window.ui = ui
+    }
+</script>
+</body>
+
+</html>
+    
